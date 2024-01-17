@@ -1,3 +1,4 @@
+import React from 'react';
 import './Banner.css'
 
 const Banner = () => {
@@ -11,6 +12,7 @@ const Banner = () => {
                 </div>
                 <h1 className="description">This is just a dummy paragraph This is just a dummy paragraph This is just a dummy paragraph</h1>
             </div>
+            <div className="fade-bottom"></div>
         </div>
     )
 }

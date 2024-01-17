@@ -4,7 +4,8 @@
     padding: 20px 10px;
     display: flex;
     justify-content: space-between;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.49) 50%, rgba(0, 0, 0, 0) 100%);
+    background-color: black;
+    align-items: center;
 }
 
 .logo {
