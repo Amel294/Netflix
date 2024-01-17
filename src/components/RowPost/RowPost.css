@@ -2,3 +2,25 @@
     margin-left: 20px;
     color: #fff;
 }
+
+
+.posters{
+    display: flex;
+    padding: 20px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+}
+.poster::-webkit-scrollbar{
+    display: none;
+}
+
+.poster{
+    max-height: 250px;
+    margin-right: 10px;
+}
+
+.small-poster{
+    max-height: 100px;
+    margin-right: 10px;
+}

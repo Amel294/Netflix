@@ -1,15 +1,53 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from '../../axios'
 import './RowPost.css'
-function RowPost() {
+import { imageUrl } from '../../constants/constants'
+import YouTube from 'react-youtube'
+import { getUrl } from '../urls'
+
+function RowPost({ title, isSmall, url }) {
+
+  const [movies, setMovies] = useState([])
+  const [urlId, setUrlId] = useState('')
+
+  useEffect(() => {
+    axios.get(url).then(Response => {
+      setMovies(Response.data.results)
+      console.log("Movies are")
+      console.log(movies)
+
+    })
+  }, [])
+  const opts = {
+    height: '390',
+    width: '100%',
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 0,
+    }
+  }
+
+  const handleMovie = (id) => {
+    axios.get(getUrl(id)).then(Response=>{
+      console.log("Video")
+      console.log(Response)
+    })
+   
+  }
   return (
     <div className='row'>
-        <h2>Title</h2>
-        <div className='posters'>
-            <img src='https://images.squarespace-cdn.com/content/v1/59232e19579fb3fa44a693c2/1589212826160-UM9PEPGOS3OJPR0FJ81X/ke17ZwdGBToddI8pDm48kHZUaJeKzodyg_sXWBMxNTdZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxCBUU7B-_SAG1kGvCwYgmUjQXvn8_OJjtz3K1llMQBa1MPsuSXPSY3X-tgg78M7lI/SKOyqL1qFLIhbK6ho2lB-696x975.jpg?format=1500w' alt='poster' />
-        </div>
+      <h2>Netflix Originals</h2>
+      <div className='posters'>
+        {movies &&
+          movies.map((obj, index) => (
+            <img onClick={()=>handleMovie(obj.id)} className={isSmall ? "small-poster" : "poster"} key={index} src={`${ imageUrl + obj.backdrop_path }`} alt='poster' />
+          ))}
+      </div>
+      <YouTube opts={opts} videoId="2g811Eo7K8U" />
     </div>
-  )
+  );
 }
+
 
 export default RowPost
