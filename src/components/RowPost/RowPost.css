@@ -11,16 +11,27 @@
     overflow-y: hidden;
 
 }
-.poster::-webkit-scrollbar{
+.posters::-webkit-scrollbar{
     display: none;
 }
 
 .poster{
+    cursor:pointer;
     max-height: 250px;
     margin-right: 10px;
 }
 
 .small-poster{
+    cursor:pointer;
     max-height: 100px;
     margin-right: 10px;
 }
+
+
+.poster:hover{
+    transform:scale(1.1)
+}
+.small-poster:hover{
+    transform:scale(1.1)
+}
+
